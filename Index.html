@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine 💘</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    text-align: center;
+    color: white;
+    overflow-x: hidden;
+}
+.container {
+    padding: 40px 20px;
+}
+.card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 30px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+h1 {
+    font-size: 32px;
+}
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background: white;
+    color: #ff4b7d;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+button:hover {
+    transform: scale(1.1);
+}
+textarea {
+    width: 80%;
+    border-radius: 15px;
+    padding: 10px;
+    border: none;
+}
+#teddy {
+    font-size: 150px;
+    animation: bounce 1.5s infinite;
+}
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+.heart {
+    position: fixed;
+    color: white;
+    animation: float 6s linear infinite;
+    font-size: 20px;
+}
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<audio autoplay loop>
+    <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+</audio>
+
+<div class="container">
+<div class="card">
+
+<h1>Hey Baby 💕</h1>
+
+<p><strong>Do you love me?</strong></p>
+<button onclick="showLoveAmount()">Yes</button>
+<button onclick="alert('Hmm… think again 😏')">No</button>
+
+<div id="loveAmount" style="display:none;">
+    <p><strong>How much do you love me?</strong></p>
+    <button onclick="showDescribe()">Some 😌</button>
+    <button onclick="showDescribe()">A lot 😍</button>
+    <button onclick="showDescribe()">More than words 🥰</button>
+</div>
+
+<div id="describe" style="display:none;">
+    <p><strong>Emmanuel Chidera Enidom, describe your feelings in two minutes 💭</strong></p>
+    <textarea rows="4" placeholder="Type your feelings here..."></textarea>
+    <br>
+    <button onclick="showTeddy()">Submit 💌</button>
+</div>
+
+<div id="finalSection" style="display:none;">
+
+    <div id="teddy">🧸🌹</div>
+    <p><strong>This is for you ❤️</strong></p>
+
+    <p>
+    My love, you make my heart feel safe and full.  
+    Every moment with you feels magical.  
+    Your smile is my favorite sight, your voice my favorite sound.  
+    You are my peace, my happiness, and my forever choice.  
+    </p>
+
+    <p><strong>This is my final question…</strong></p>
+    <p><strong>Will you be my Valentine?</strong></p>
+
+    <button onclick="yesFlow()">Yes 💖</button>
+    <button id="noBtn" onmouseover="moveButton()">No 💔</button>
+
+</div>
+
+</div>
+</div>
+
+<script>
+function showLoveAmount() {
+    document.getElementById("loveAmount").style.display = "block";
+}
+
+function showDescribe() {
+    document.getElementById("describe").style.display = "block";
+}
+
+function showTeddy() {
+    document.getElementById("finalSection").style.display = "block";
+}
+
+function yesFlow() {
+    let sure = confirm("Are you really sure? 😍");
+    if(sure){
+        let finalSure = confirm("Yes or No? 😉");
+        if(finalSure){
+            alert("Well… you have no choice than to be my Valentine coz you're mine 😈");
+        }
+    }
+}
+
+function moveButton() {
+    const button = document.getElementById("noBtn");
+    const x = Math.floor(Math.random() * (window.innerWidth - 100));
+    const y = Math.floor(Math.random() * (window.innerHeight - 100));
+    button.style.position = "absolute";
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
